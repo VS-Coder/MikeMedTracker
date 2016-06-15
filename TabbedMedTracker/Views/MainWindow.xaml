@@ -1,0 +1,73 @@
+﻿<Window x:Class="TabbedMedTracker.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:vm ="clr-namespace:TabbedMedTracker.ViewModel"
+        mc:Ignorable="d ignore"
+        Height="328.5"
+        Width="402"
+        Title="MVVM Light Application"
+        Background="{x:Null}">
+
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator"/>
+        <CollectionViewSource Source="{Binding Main.LogList, Mode=TwoWay, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}"
+                              x:Key="MyCVS"/>
+        <DataTemplate x:Key="MainTabDataTemplate">
+            <Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding TimeStamp, Source={StaticResource MyCVS}}"/>
+                    <StackPanel Width="100">
+                        <TextBlock x:Name="txtDate" TextWrapping="Wrap" Text="{Binding TimeStamp, Source={StaticResource MyCVS}}"/>
+                        <TextBlock x:Name="txtName" TextWrapping="Wrap" Text="{Binding MedName, Source={StaticResource MyCVS}}"/>
+                        <TextBlock x:Name="txtQty" TextWrapping="Wrap" Text="{Binding QtyTaken, Source={StaticResource MyCVS}}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <TabControl x:Name="tabControl" TabStripPlacement="Right" Background="{x:Null}">
+            <TabItem Header="Main" Background="Blue">
+                <Grid DataContext="{Binding Mode=OneWay}">
+                    <ListView x:Name="listView" ItemTemplate="{DynamicResource MainTabDataTemplate}" Background="{x:Null}" Initialized="listView_Initialized">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Add New Log" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="Add New Med" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="View Logs" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="View Meds" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="Edit Logs" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="Edit Meds" Height="24" VerticalAlignment="Bottom"
+                     Background="Blue">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

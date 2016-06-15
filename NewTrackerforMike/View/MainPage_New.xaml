@@ -1,0 +1,63 @@
+﻿<Window x:Class="NewTrackerforMike.View.MainPage_New"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding Main, Source={StaticResource Locator}}" 
+        Background="{DynamicResource WindowBackgroundColor}" 
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" 
+        FontSize="16" Icon="MainIcon.png" 
+        Title="{Binding WelcomeTitle}"
+        Height="336.5">
+
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator"/>
+        <DataTemplate x:Key="ListViewMainPageTemplate">
+            <Grid>
+                <TextBlock x:Name="textBlock" Margin="0,0,0,4.04" TextWrapping="Wrap"
+                           Text="{Binding Name}"
+                           d:LayoutOverrides="Width, Height"/>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="95*"/>
+            <RowDefinition Height="192*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="77*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="listView" Background="{x:Null}" 
+                  ItemsSource="{Binding Experiences}" 
+                  Foreground="{DynamicResource LabelTextColor}" Margin="0,0,10,0"
+                  Grid.RowSpan="2" IsTabStop="True" 
+                  SelectedItem="{Binding SelectedExp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  ItemTemplate="{DynamicResource ListViewMainPageTemplate}" 
+                  SelectionMode="Single"/>
+        <DataGrid x:Name="dtaList" Grid.Column="1"
+                  ItemsSource="{Binding LogLastSnapshot}" 
+                  Background="{DynamicResource WindowBackgroundColor}"
+                  Foreground="{DynamicResource LabelTextColor}" Grid.Row="1" 
+                  Height="Auto" RowStyle="{DynamicResource DataGridRowStyle2}" 
+                  SelectionChanged="dtaList_SelectionChanged"/>
+        <TextBlock x:Name="tblTitle" Grid.Column="1" Margin="142,10,142,0" 
+                   TextWrapping="Wrap" Text="{Binding WelcomeTitle}" VerticalAlignment="Top" 
+                   Height="40" Foreground="{DynamicResource LabelTextColor}" FontSize="21.333" 
+                   FontWeight="Bold" HorizontalAlignment="Left" Width="332"/>
+        <TextBlock x:Name="tblSnapShot" Grid.Column="1" Margin="157,59,0,0" 
+                   TextWrapping="Wrap" Text="Medication SnapShot"
+                   VerticalAlignment="Top" Height="36" 
+                   FontWeight="Bold" Foreground="{DynamicResource LabelTextColor}" FontSize="21.333"
+                   HorizontalAlignment="Left" Width="215"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="525,10,0,0" VerticalAlignment="Top" Width="81">
+            <TextBlock x:Name="txtCountTxt" TextWrapping="Wrap" Text="Log Count" Foreground="{DynamicResource LabelTextColor}"/>
+            <TextBlock x:Name="txtLogCount" TextWrapping="Wrap" Text="{Binding LogCount}" Foreground="{DynamicResource LabelTextColor}"/>
+        </StackPanel>
+    </Grid>
+</Window>

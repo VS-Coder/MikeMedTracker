@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0CA6933-6CA8-4114-BA14-BEF1713A03D0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NewTrackerforMike</RootNamespace>
+    <AssemblyName>NewTrackerforMike</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\New Tracker App\App2292016\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>\\Mike-PC\OneDrive\New Tracker App\NewerApp\Application Files\</UpdateUrl>
+    <ProductName>Med Tracker For Mike</ProductName>
+    <PublisherName>Mike Davis</PublisherName>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>3.0.6.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>48602FF13E671CF1E302A741327E638C00C04ABC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>NewTrackerforMike_1_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>NewTrackerforMike.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon1.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.13.5.0\lib\net40-client\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37226, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="General Methods\LogCountTotlals.cs" />
+    <Compile Include="General Methods\MedRecon.cs" />
+    <Compile Include="Migrations\201602271757383_Initial.cs" />
+    <Compile Include="Migrations\201602271757383_Initial.Designer.cs">
+      <DependentUpon>201602271757383_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604281553441_Newacc.cs" />
+    <Compile Include="Migrations\201604281553441_Newacc.Designer.cs">
+      <DependentUpon>201604281553441_Newacc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604302316140_DoseInterval.cs" />
+    <Compile Include="Migrations\201604302316140_DoseInterval.Designer.cs">
+      <DependentUpon>201604302316140_DoseInterval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605010209158_StrengthAdded.cs" />
+    <Compile Include="Migrations\201605010209158_StrengthAdded.Designer.cs">
+      <DependentUpon>201605010209158_StrengthAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605081116555_NewListing.cs" />
+    <Compile Include="Migrations\201605081116555_NewListing.Designer.cs">
+      <DependentUpon>201605081116555_NewListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605141619094_AddedArchivedstatus.cs" />
+    <Compile Include="Migrations\201605141619094_AddedArchivedstatus.Designer.cs">
+      <DependentUpon>201605141619094_AddedArchivedstatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606092209533_newtoold.cs" />
+    <Compile Include="Migrations\201606092209533_newtoold.Designer.cs">
+      <DependentUpon>201606092209533_newtoold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Experience.cs" />
+    <Compile Include="Model\MedDocuments.cs" />
+    <Compile Include="Model\PillCount.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\IDocumentService.cs" />
+    <Compile Include="ViewModel\MedAddViewModel.cs" />
+    <Compile Include="ViewModel\MedDocViewModel.cs" />
+    <Compile Include="ViewModel\MedEditViewModel.cs" />
+    <Compile Include="ViewModel\PillCountViewModel.cs" />
+    <Compile Include="View\DocView.xaml.cs">
+      <DependentUpon>DocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogAddView.xaml.cs">
+      <DependentUpon>LogAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogEditView.xaml.cs">
+      <DependentUpon>LogEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LogMainView.xaml.cs">
+      <DependentUpon>LogMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainPage_New.xaml.cs">
+      <DependentUpon>MainPage_New.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedAddView.xaml.cs">
+      <DependentUpon>MedAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedDocView.xaml.cs">
+      <DependentUpon>MedDocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedEditorView.xaml.cs">
+      <DependentUpon>MedEditorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MedMainView.xaml.cs">
+      <DependentUpon>MedMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataItem.cs" />
+    <Compile Include="Model\Logs.cs" />
+    <Compile Include="Model\Meds.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\TrackerContext.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\IDataService.cs" />
+    <Compile Include="ViewModel\LogAddViewModel.cs" />
+    <Compile Include="ViewModel\LogEditViewModel.cs" />
+    <Compile Include="ViewModel\LogMainViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MedMainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\PillCountView.xaml.cs">
+      <DependentUpon>PillCountView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\DocView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogAddView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogEditView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogMainView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainPage_New.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\MedAddView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MedDocView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MedEditorView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MedMainView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Skins\MainSkin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PillCountView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Migrations\201602271757383_Initial.resx">
+      <DependentUpon>201602271757383_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604281553441_Newacc.resx">
+      <DependentUpon>201604281553441_Newacc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604302316140_DoseInterval.resx">
+      <DependentUpon>201604302316140_DoseInterval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605010209158_StrengthAdded.resx">
+      <DependentUpon>201605010209158_StrengthAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605081116555_NewListing.resx">
+      <DependentUpon>201605081116555_NewListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605141619094_AddedArchivedstatus.resx">
+      <DependentUpon>201605141619094_AddedArchivedstatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606092209533_newtoold.resx">
+      <DependentUpon>201606092209533_newtoold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="NewTrackerforMike_1_TemporaryKey.pfx" />
+    <None Include="NewTrackerforMike_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.LogAddViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.LogEditViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.LogMainViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.MainViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.MedAddViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.MedEditViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.MedMainViewModel.datasource" />
+    <None Include="Properties\DataSources\NewTrackerforMike.ViewModel.ViewModelLocator.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="View\SplashView.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SqlServer.SqlLocalDB.11.1">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2012 Express LocalDB</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon1.ico" />
+    <Resource Include="DocFiles\Busparone-1.jpg" />
+    <Resource Include="DocFiles\Busparone-2.jpg" />
+    <Resource Include="DocFiles\Zolpidem-1.jpg" />
+    <Resource Include="DocFiles\Zolpidem-2.jpg" />
+    <Resource Include="DocFiles\Meloxicam-1.jpg" />
+    <Resource Include="DocFiles\Meloxicam-2.jpg" />
+    <Resource Include="DocFiles\Quetiapine-1.jpg" />
+    <Resource Include="DocFiles\Quetiapine-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\MainIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="GalaSoft.MvvmLight.Extras.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="GalaSoft.MvvmLight.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="GalaSoft.MvvmLight.Platform.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.Practices.ServiceLocation.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="ms-appdata____Roaming_MikeMedTracker.Model.TrackerContext.mdf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="ms-appdata____Roaming_MikeMedTracker.Model.TrackerContext_log.ldf">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="NewTrackerforMike.pdb">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ms-appdata____Roaming_MikeMedTracker.Model.TrackerContext.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ms-appdata____Roaming_MikeMedTracker.Model.TrackerContext_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Warning.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

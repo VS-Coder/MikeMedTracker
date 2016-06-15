@@ -1,0 +1,45 @@
+﻿<Window x:Class="NewTrackerforMike.View.MedMainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel"
+        xmlns:design="clr-namespace:NewTrackerforMike.Design"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding MedMainVM, Source={StaticResource Locator}}"
+        Background="{DynamicResource WindowBackgroundColor}"
+        Foreground="{DynamicResource LabelTextColor}" Title="{Binding Title, Mode=OneWay}" 
+        Icon="MainIcon.png" Width="820.5" SizeToContent="WidthAndHeight" 
+        WindowStartupLocation="CenterScreen" FontSize="16" Height="766" WindowState="Maximized" >
+
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator"/>
+    </Window.Resources>
+
+    <Grid Margin="0,0,15,0">
+        <TextBlock x:Name="txtMsg" HorizontalAlignment="Left" TextWrapping="Wrap" 
+                   Text="Medication Viewer" VerticalAlignment="Top" FontSize="32" 
+                   FontWeight="Bold" Margin="194,10,0,0" Width="327"/>
+        <DataGrid x:Name="dataGrid" Margin="10,58,10,189" Background="{x:Null}" 
+                  Foreground="{DynamicResource LabelTextColor}" 
+                  BorderBrush="{DynamicResource LabelBorderColor}" 
+                  ItemsSource="{Binding MedList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectionMode="Single" SelectedItem="{Binding Med, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  AreRowDetailsFrozen="True" RowStyle="{DynamicResource DataGridRowStyle2}"/>
+        <StackPanel HorizontalAlignment="Left" Height="134" Margin="10,591,0,0" VerticalAlignment="Top" Width="134">
+            <Button x:Name="btnClose" Content="Close" Click="btnClose_Click" Background="{x:Null}" Foreground="White"/>
+            <Button x:Name="button" Content="Delete Med" Command="{Binding DeleteMed}"
+                    Background="{x:Null}" Foreground="White"/>
+            <Button x:Name="button2" Content="Export Med List" Command="{Binding ExportMedList}"
+                    Background="{x:Null}" Foreground="White"/>
+            <Button x:Name="button1" Content="Info" Command="{Binding GetInfo}"
+                    Background="{x:Null}" Foreground="White"/>
+            <Button x:Name="button3" Content="List Active Meds" 
+                    Foreground="{DynamicResource LabelBorderColor}" Background="{x:Null}" Height="35.78"/>
+        </StackPanel>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="66" Margin="383,659,0,0"
+                   TextWrapping="Wrap" Text="{Binding Confirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   VerticalAlignment="Top" Width="414" FontSize="29.333" FontWeight="Bold"/>
+    </Grid>
+</Window>

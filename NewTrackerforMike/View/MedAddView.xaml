@@ -1,0 +1,100 @@
+﻿<Window x:Class="NewTrackerforMike.View.MedAddView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding MedAddVM, Source={StaticResource Locator}}" 
+        Background="{DynamicResource WindowBackgroundColor}"
+        Foreground="{DynamicResource LabelTextColor}"
+        Loaded="Window_Loaded" Title="{Binding Title, Mode=OneWay}" 
+        Width="1295.5" SizeToContent="WidthAndHeight" 
+        WindowStartupLocation="CenterScreen" Icon="MainIcon.png" 
+        FontSize="16" Height="649" WindowState="Maximized">
+
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer HorizontalAlignment="Left" Width="Auto" Margin="0,10">
+            <Grid x:Name="grid1" DataContext="{Binding ActiveMed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        		VerticalAlignment="Top" Height="499.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Directions:" Grid.Column="0" Grid.Row="0" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="directionsTextBox" Grid.Column="1" Grid.Row="0" Text="{Binding Directions, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" SpellCheck.IsEnabled="True" AcceptsReturn="True"/>
+                <Label Content="Med Name:" Grid.Column="0" Grid.Row="1" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="medNameTextBox" Grid.Column="1" Grid.Row="1" Text="{Binding MedName, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                <Label Content="Med Strength:" Grid.Column="0" Grid.Row="2" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="medStrengthTextBox" Grid.Column="1" Grid.Row="2" Text="{Binding MedStrength, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                <Label Content="Refill Date Time:" Grid.Column="0" Grid.Row="3" Foreground="{DynamicResource LabelTextColor}"/>
+                <DatePicker x:Name="refillDateTimeDatePicker" Grid.Column="1" Grid.Row="3" 
+                SelectedDate="{Binding RefillDateTime, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"
+                Text="2/21/2016"/>
+                <Label Content="Refill Qty:" Grid.Column="0" Grid.Row="4" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="refillQtyTextBox" Grid.Column="1" Grid.Row="4" Text="{Binding RefillQty, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                <Label Content="Rx Number:" Grid.Column="0" Grid.Row="5" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="rxNumberTextBox" Grid.Column="1" Grid.Row="5" Text="{Binding RxNumber, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+                <Label x:Name="label" Content="Perscribed Qty" Grid.Row="6" Foreground="{DynamicResource LabelTextColor}"/>
+                <TextBox x:Name="textBox" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding QtyPerDose, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label x:Name="label1" Content="Active Status" Grid.Row="7" Foreground="{DynamicResource LabelTextColor}"/>
+                <Label x:Name="label2" Content="Med Count" Grid.Row="8" Foreground="{DynamicResource LabelTextColor}"/>
+                <Label x:Name="label3" Content="Med Count Date Time" Grid.Row="9" Foreground="{DynamicResource LabelTextColor}"/>
+                <CheckBox x:Name="checkBox" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="46,10,0,0" Grid.Row="7" VerticalAlignment="Top" Height="15" Width="20"
+        			IsChecked="{Binding ActiveStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="textBox1" Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="{Binding MedCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker Grid.Column="1" Grid.Row="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            DisplayDate="2016-01-05" Cursor="None" 
+                            SelectedDate="{Binding CountDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                            SelectedDateFormat="Short" Text="1/21/2016"/>
+                <TextBlock x:Name="textBlock" Grid.Row="10" TextWrapping="Wrap" Text="Dose Interval"/>
+                <TextBox x:Name="textBox2" Grid.Column="1" Grid.Row="10" 
+                         TextWrapping="Wrap"/>
+                <TextBlock x:Name="tctTextBlock1" Grid.Row="11" TextWrapping="Wrap" Text="Archive"/>
+                <CheckBox x:Name="Archived" Content="" Grid.Column="1" 
+                          Margin="10,10,25.645,0" Grid.Row="11" d:LayoutOverrides="Width, Height"/>
+            </Grid>
+        </ScrollViewer>
+        <StackPanel HorizontalAlignment="Left" Height="100" Margin="566,7,-184,0" VerticalAlignment="Top" Width="294" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.118"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button x:Name="btnSave" Content="Save" Command="{Binding SaveNewMed}"/>
+            <Button x:Name="btnClearForm" Content="Clear Form" Command="{Binding FormClear}"/>
+            <Button x:Name="btnClose" Content="Close" Click="btnClose_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,137,-305,0" 
+                  VerticalAlignment="Top" Width="970" Height="471" Background="{DynamicResource WindowBackgroundColor}" 
+                  Foreground="{DynamicResource LabelTextColor}" 
+                  ItemsSource="{Binding MedList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  RowStyle="{DynamicResource DataGridRowStyle2}" Grid.Column="1" FontSize="14.667"/>
+    </Grid>
+</Window>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="NewTrackerforMike.View.LogEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding LogEditVM, Source={StaticResource Locator}}"
+        Background="{DynamicResource WindowBackgroundColor}"
+        Foreground="{DynamicResource LabelTextColor}" 
+        Height="561.624" Width="734.889" 
+        Title="{Binding Title}" 
+        Loaded="Window_Loaded" SizeToContent="Width" Icon="MainIcon.png" FontSize="16">
+
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid x:Name="grid1" DataContext="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="363">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Log Notes:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}" BorderBrush="{DynamicResource LabelBorderColor}"/>
+            <TextBox x:Name="logNotesTextBox" Grid.Column="1" Grid.Row="0" Text="{Binding LogNotes, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Margin="0,0,-135,0"/>
+            <Label Content="Med Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}"/>
+            <TextBox x:Name="medNameTextBox" Grid.Column="1" Grid.Row="1" Text="{Binding MedName, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Margin="0,0,-135,0"/>
+            <Label Content="Qty Taken:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}"/>
+            <TextBox x:Name="qtyTakenTextBox" Grid.Column="1" Grid.Row="2" Text="{Binding QtyTaken, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Margin="0,0,-135,0"/>
+            <Label Content="Time Stamp:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}"/>
+            <DatePicker x:Name="timeStampDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,-135,4" Grid.Row="3" SelectedDate="{Binding EditLog.TimeStamp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="256" Text="{Binding TimeStamp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <StackPanel HorizontalAlignment="Left" Height="68" Margin="583,28,0,0" VerticalAlignment="Top" Width="126">
+            <Button x:Name="btnSave" Content="Save Changes" Command="{Binding SaveChangesToEditor}" Background="{x:Null}" Foreground="White"/>
+            <Button x:Name="btnClose" Content="Close" Click="btnClose_Click" Foreground="White" Background="{x:Null}"/>
+        </StackPanel>
+        <DataGrid x:Name="dataGrid" 
+                  HorizontalAlignment="Left" Margin="10,205,0,0"
+                  VerticalAlignment="Top" Height="316" Width="699" Background="{x:Null}" 
+                  ItemsSource="{Binding EditorList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowStyle="{DynamicResource DataGridRowStyle2}" Foreground="{DynamicResource LabelTextColor}"/>
+        <TextBlock x:Name="textBlock" Height="70" Margin="479,101,18,0" TextWrapping="Wrap" Text="{Binding Success, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="29.333" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <CheckBox x:Name="checkBox" Content="Archived Med" HorizontalAlignment="Left" 
+                  Margin="416,33,0,0" VerticalAlignment="Top" Background="{x:Null}" 
+                  Foreground="{DynamicResource LabelTextColor}"/>
+    </Grid>
+</Window>
