@@ -27,10 +27,9 @@ namespace NewTrackerforMike.Model
         public string Strength { get; set; }
 
         [DisplayName("Qty Taken")]
-        public int QtyTaken { get; set; }
-
-
-        //public int MedID { get; set; }
+        public double QtyTaken { get; set; }
+        [DisplayName("Med ID")]
+        public int MedID { get; set; }
         //public virtual Meds Meds { get; set; }
 
         //public int PatientID { get; set; }

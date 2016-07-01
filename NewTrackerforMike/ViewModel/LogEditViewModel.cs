@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using NewTrackerforMike.Model;
 using NewTrackerforMike.Services;
+using System;
 using System.Collections.ObjectModel;
 
 namespace NewTrackerforMike.ViewModel
@@ -12,7 +13,6 @@ namespace NewTrackerforMike.ViewModel
         public LogEditViewModel(IDataService dataService)
         {
             SaveChangesToEditor = new RelayCommand(() => ChangesSave(EditLog));
-
 
             _dataService = dataService;
             _dataService.GetLogEditorTitle(
@@ -35,8 +35,7 @@ namespace NewTrackerforMike.ViewModel
             get { return _success; }
             set
             {
-                _success = value;
-                RaisePropertyChanged("Success");
+                Set("Success", ref _success, value);
             }
         }
 
@@ -47,8 +46,7 @@ namespace NewTrackerforMike.ViewModel
             get { return title; }
             set
             {
-                title = value;
-                RaisePropertyChanged("Title");
+                Set("Title", ref title, value);
             }
         }
 
@@ -59,10 +57,22 @@ namespace NewTrackerforMike.ViewModel
             get { return editlog; }
             set
             {
-                editlog = value;
-                RaisePropertyChanged("EditLog");
+                Set("EditLog", ref editlog, value);
             }
         }
+
+        private DateTime _tod;
+
+        public DateTime TOD
+        {
+            get { return _tod; }
+            set
+            {
+                Set("Tod", ref _tod, value);
+            }
+        }
+
+
 
         private ObservableCollection<Logs> _editorList;
 
@@ -71,10 +81,7 @@ namespace NewTrackerforMike.ViewModel
             get { return _editorList; }
             set
             {
-                _editorList = value;
-                RaisePropertyChanged<ObservableCollection<Logs>>("EditorList", broadcast: true);
-                //RaisePropertyChanged("EditorList");
-                
+                Set("EditorList", ref _editorList, value);                
             }
             
         }

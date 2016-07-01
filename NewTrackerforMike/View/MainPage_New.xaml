@@ -44,8 +44,7 @@
                   ItemsSource="{Binding LogLastSnapshot}" 
                   Background="{DynamicResource WindowBackgroundColor}"
                   Foreground="{DynamicResource LabelTextColor}" Grid.Row="1" 
-                  Height="Auto" RowStyle="{DynamicResource DataGridRowStyle2}" 
-                  SelectionChanged="dtaList_SelectionChanged"/>
+                  Height="Auto" RowStyle="{DynamicResource DataGridRowStyle2}"/>
         <TextBlock x:Name="tblTitle" Grid.Column="1" Margin="142,10,142,0" 
                    TextWrapping="Wrap" Text="{Binding WelcomeTitle}" VerticalAlignment="Top" 
                    Height="40" Foreground="{DynamicResource LabelTextColor}" FontSize="21.333" 
@@ -57,7 +56,9 @@
                    HorizontalAlignment="Left" Width="215"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="86" Margin="525,10,0,0" VerticalAlignment="Top" Width="81">
             <TextBlock x:Name="txtCountTxt" TextWrapping="Wrap" Text="Log Count" Foreground="{DynamicResource LabelTextColor}"/>
-            <TextBlock x:Name="txtLogCount" TextWrapping="Wrap" Text="{Binding LogCount}" Foreground="{DynamicResource LabelTextColor}"/>
+            <TextBlock x:Name="txtLogCount" TextWrapping="Wrap" 
+                       Text="{Binding LogCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       Foreground="{DynamicResource LabelTextColor}"/>
         </StackPanel>
     </Grid>
 </Window>

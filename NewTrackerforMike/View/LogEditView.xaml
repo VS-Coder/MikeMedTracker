@@ -9,16 +9,16 @@
         DataContext="{Binding LogEditVM, Source={StaticResource Locator}}"
         Background="{DynamicResource WindowBackgroundColor}"
         Foreground="{DynamicResource LabelTextColor}" 
-        Height="561.624" Width="734.889" 
+        Height="561.624" Width="883.389" 
         Title="{Binding Title}" 
-        Loaded="Window_Loaded" SizeToContent="Width" Icon="MainIcon.png" FontSize="16">
+        Loaded="Window_Loaded" SizeToContent="Width" Icon="MainIcon.png" FontSize="16" Activated="Window_Activated">
 
     <Window.Resources>
         <vm:ViewModelLocator x:Key="vmLocator"/>
     </Window.Resources>
 
     <Grid>
-        <Grid x:Name="grid1" DataContext="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="363">
+        <Grid x:Name="grid1" DataContext="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="363" Height="166">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -43,11 +43,11 @@
             <Button x:Name="btnClose" Content="Close" Click="btnClose_Click" Foreground="White" Background="{x:Null}"/>
         </StackPanel>
         <DataGrid x:Name="dataGrid" 
-                  HorizontalAlignment="Left" Margin="10,205,0,0"
-                  VerticalAlignment="Top" Height="316" Width="699" Background="{x:Null}" 
+                  HorizontalAlignment="Left" Margin="10,259,0,0"
+                  VerticalAlignment="Top" Background="{x:Null}" 
                   ItemsSource="{Binding EditorList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowStyle="{DynamicResource DataGridRowStyle2}" Foreground="{DynamicResource LabelTextColor}"/>
-        <TextBlock x:Name="textBlock" Height="70" Margin="479,101,18,0" TextWrapping="Wrap" Text="{Binding Success, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="29.333" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <TextBlock x:Name="textBlock" Height="70" Margin="416,101,81,0" TextWrapping="Wrap" Text="{Binding Success, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="29.333" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
         <CheckBox x:Name="checkBox" Content="Archived Med" HorizontalAlignment="Left" 
                   Margin="416,33,0,0" VerticalAlignment="Top" Background="{x:Null}" 
                   Foreground="{DynamicResource LabelTextColor}"/>

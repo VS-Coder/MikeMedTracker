@@ -19,18 +19,18 @@
     <PublishUrl>D:\New Tracker App\App2292016\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>\\Mike-PC\OneDrive\New Tracker App\NewerApp\Application Files\</UpdateUrl>
+    <UpdateUrl>http://localhost/NewTrackerforMike/</UpdateUrl>
     <ProductName>Med Tracker For Mike</ProductName>
     <PublisherName>Mike Davis</PublisherName>
-    <ApplicationRevision>13</ApplicationRevision>
-    <ApplicationVersion>3.0.6.%2a</ApplicationVersion>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>5.4.23.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -160,6 +160,18 @@
     <Compile Include="Migrations\201606092209533_newtoold.cs" />
     <Compile Include="Migrations\201606092209533_newtoold.Designer.cs">
       <DependentUpon>201606092209533_newtoold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606251515071_LogChangeDoubleQtyTaken.cs" />
+    <Compile Include="Migrations\201606251515071_LogChangeDoubleQtyTaken.Designer.cs">
+      <DependentUpon>201606251515071_LogChangeDoubleQtyTaken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606282303112_MedIntChanges.cs" />
+    <Compile Include="Migrations\201606282303112_MedIntChanges.Designer.cs">
+      <DependentUpon>201606282303112_MedIntChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607010139594_MedIdAddedToLog.cs" />
+    <Compile Include="Migrations\201607010139594_MedIdAddedToLog.Designer.cs">
+      <DependentUpon>201607010139594_MedIdAddedToLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Experience.cs" />
@@ -306,6 +318,15 @@
     <EmbeddedResource Include="Migrations\201606092209533_newtoold.resx">
       <DependentUpon>201606092209533_newtoold.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606251515071_LogChangeDoubleQtyTaken.resx">
+      <DependentUpon>201606251515071_LogChangeDoubleQtyTaken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606282303112_MedIntChanges.resx">
+      <DependentUpon>201606282303112_MedIntChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607010139594_MedIdAddedToLog.resx">
+      <DependentUpon>201607010139594_MedIdAddedToLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -420,7 +441,7 @@
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
+      <PublishState>DataFile</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
@@ -430,7 +451,7 @@
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
+      <PublishState>DataFile</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>

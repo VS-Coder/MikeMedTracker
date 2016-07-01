@@ -32,7 +32,7 @@ namespace NewTrackerforMike.Model
         public string Directions { get; set; }
 
         [DisplayName("Qty Per Dose")]
-        public int QtyPerDose { get; set; }
+        public double QtyPerDose { get; set; }
 
         [DisplayName("Dose Interval")]
         public string DoseInterval { get; set; }
@@ -44,7 +44,7 @@ namespace NewTrackerforMike.Model
         public bool Archived { get; set; }
 
         [DisplayName("Med Count")]
-        public int MedCount { get; set; }
+        public double MedCount { get; set; }
 
         [DisplayName("Count Date")]
         public DateTime CountDate { get; set; }

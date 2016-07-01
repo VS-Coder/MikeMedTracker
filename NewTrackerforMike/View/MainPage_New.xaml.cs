@@ -11,15 +11,15 @@ namespace NewTrackerforMike.View
         public MainPage_New()
         {
             InitializeComponent();
-            _vm = (ViewModelLocator)this.FindResource("vmLocator");
             Closing += (s, e) => ViewModelLocator.Cleanup();
+            _vm = (ViewModelLocator)this.FindResource("vmLocator");
         }
 
         protected override void OnInitialized(EventArgs e)
         {
             listView.SelectedItem = null;
             listView.UnselectAll();
-            this.dtaList.Items.Refresh();
+            dtaList.Items.Refresh();
             base.OnInitialized(e);
         }
         
@@ -28,11 +28,9 @@ namespace NewTrackerforMike.View
             listView.SelectedItem = null;
             listView.UnselectAll();
             dtaList.Items.Refresh();
+            _vm.Main.GetCount();
             base.OnActivated(e);
         }
 
-        private void dtaList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-        }
     }
 }

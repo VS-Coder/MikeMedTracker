@@ -14,7 +14,7 @@ namespace NewTrackerforMike.View
             //Closing += LogAddView_Closing;
             _vm = (ViewModelLocator)this.FindResource("vmLocator");
             _vm.LogAddVM.NewLog = new Logs();
-            _vm.LogAddVM.NewLog.TimeStamp = DateTime.Now;
+            //_vm.LogAddVM.NewLog.TimeStamp = DateTime.Now;
             _vm.LogAddVM.NewLog.TimeStamp = DateTime.Now;
             this.timeStampDatePicker.Text = DateTime.Now.ToShortDateString();
 
@@ -48,6 +48,16 @@ namespace NewTrackerforMike.View
             }
 
             _vm.LogAddVM.NewLog = new Logs();
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            this.dataGrid.Items.Refresh();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            this.dataGrid.Items.Refresh();
         }
     }
 }

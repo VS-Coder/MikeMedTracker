@@ -80,19 +80,35 @@ namespace NewTrackerforMike.Services
             }
         }
 
+        //public void GetTotalLogCountForMainForm(Action<PillCount, Exception> callback)
+        //{
+        //    using (_db = new TrackerContext())
+        //    {
+        //        //    var _count = _db.;
+        //        //    callback(_count, null);
+        //        return;
+        //    }
+        //}
 
-        public bool LogAdd(Logs _log)
+
+
+        public bool LogAdd(Logs _log, int medId)
         {
             try
             {
                 using (_db = new TrackerContext())
                 {
-                    var qtyLoginfo = _log.QtyTaken;
-                    //var qtyMedInfo = _db.Medications.SingleOrDefault(t => t.MedCount);
-                    _log.TimeStamp = DateTime.Now;
-                    _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Added;
-                    _db.SaveChanges();
-                    return true;
+                    if (CalculateTotalPillUsage("LogAdd", _log.QtyTaken, medId, _log.LogsID) != 3)
+                    {
+                        _log.TimeStamp = DateTime.Now;
+                        _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Added;
+                        _db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch(Exception e)
@@ -100,21 +116,22 @@ namespace NewTrackerforMike.Services
                 return false;
             }
         }
-
-        //public int GetCurrentPillTotals(int LogDose, int CountperDate)
-        //{
-
-        //    return 0;
-        //}
         public bool EditLog(Logs _log)
         {
             try
             {
                 using (_db = new TrackerContext())
                 {
-                    _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Modified;
-                    _db.SaveChanges();
-                    return true;
+                    if (CalculateTotalPillUsage("EditLog", _log.QtyTaken, _log.MedID, _log.LogsID) != 3)
+                    {
+                        _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Modified;
+                        _db.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch
@@ -219,16 +236,7 @@ namespace NewTrackerforMike.Services
                 {
                     // Add Qty taken from the log back into Pill Count.
                     //
-
                     var selectedMed = _db.Medications.Where(e => e.MedName == _log.MedName);
-                    //var currentcount = _log.QtyTaken;
-                    //var newCount = currentcount;
-                    //var resultCount = (currentcount + _log.QtyTaken);
-                    //_log.QtyTaken = resultCount;
-
-
-                    //
-
                     _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Modified;
                     var item = _db.LogData.Remove(_log);
                     _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Deleted;
@@ -380,25 +388,69 @@ namespace NewTrackerforMike.Services
             }
         }
 
-        public int CalculateTotalPillUsage(string callingFunc, int qtyUsed, int currentCount)
+        public double CalculateTotalPillUsage(string callingFunc, double qtyUsed, int medId, int _logId)
         {
             try
             {
                 switch (callingFunc)
                 {
                     case "LogAdd":
-                        var cnt = currentCount - qtyUsed;
+                        using (_db = new TrackerContext())
+                        {
+                            var _med = _db.Medications.Single(r => r.MedsID == medId);
+                            if (_med != null)
+                            {
+                                _med.MedCount = _med.MedCount - qtyUsed;
+                                _db.Entry<Meds>(_med).State = System.Data.Entity.EntityState.Modified;
+                                _db.SaveChanges();
+                            }
+                        }
                             break;
                     case "EditLog":
                         //cnt = currentCount - qtyUsed;
-                        break;
+                        using (_db = new TrackerContext())
+                        {
+                            // Getting stored log for comparison to the edited log.
+                            var _log = _db.LogData.Single(p => p.LogsID == _logId).QtyTaken;
+                            // Getting stored med listing to run functions against.
+                            var _med = _db.Medications.Single(p => p.MedsID == medId);
+                            //Conditional evaluation.
+                            if (qtyUsed == _log)
+                            {
+                                // No action reqired.
+                            }   
+                            // taken less than stored log entry reflects. So edit to qty taken for less than saved.      
+                            else if (_log > qtyUsed)
+                            {
+                                //Leftover to be added to the MedCount on the Med record.
+                                var val = _log + qtyUsed;
+                                _med.MedCount = val;
+                                //var tmp = _db.LogData.Single(r => r.LogsID == _logId);
+                                //tmp.QtyTaken = val;
+                                _db.Entry<Meds>(_med).State = System.Data.Entity.EntityState.Modified;
+                                _db.SaveChanges();
+                            }
+                            //taken more than stored log reflects. So edit to qty taken for more than saved.
+                            else if (_log < qtyUsed)
+                            {
+                                var val = _log - qtyUsed;
+                                _med.MedCount = val;
+                                //var tmp = _db.LogData.Single(r => r.LogsID == _logId);
+                                //tmp.QtyTaken = val;
+                                //_db.LogData.Single(r => r.QtyTaken == val);
+                                //_db.Entry<Logs>(tmp).State = System.Data.Entity.EntityState.Modified;
+                                _db.Entry<Meds>(_med).State = System.Data.Entity.EntityState.Modified;
+                                _db.SaveChanges();
+                            }
+                        }
+                            break;
                     default:
                         break;
                 }
             }
-            catch
+            catch // if code reaches here, there was no Med ID saved in the log.
             {
-
+                return 3;
             }
             return 0;
         }

@@ -76,9 +76,18 @@ namespace NewTrackerforMike.Design
             }
         }
 
-        public bool LogAdd(Logs _log)
+        public bool LogAdd(Logs _log, int medId)
         {
             return false;
+        }
+        public void GetTotalLogCountForMainForm(Action<PillCount, Exception> callback)
+        {
+            using (_db = new TrackerContext())
+            {
+                //    var _count = _db.;
+                //    callback(_count, null);
+                return;
+            }
         }
         public bool EditLog(Logs _log)
         {
@@ -185,6 +194,34 @@ namespace NewTrackerforMike.Design
             option.Add(tmp);
 
             return option;
+        }
+
+        //public void GetTotalLogCountForMainForm()
+        //{
+        //    return;
+        //}
+
+        public double CalculateTotalPillUsage(string callingFunc, double qtyUsed, int medId, int _logId)
+        {
+            try
+            {
+                switch (callingFunc)
+                {
+                    case "LogAdd":
+                        //var cnt = currentCount - qtyUsed;
+                        break;
+                    case "EditLog":
+                        //cnt = currentCount - qtyUsed;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+
+            }
+            return 0;
         }
 
 

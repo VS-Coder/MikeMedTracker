@@ -1,14 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
-using NewTrackerforMike.General_Methods;
 using NewTrackerforMike.Model;
 using NewTrackerforMike.Services;
 using NewTrackerforMike.View;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace NewTrackerforMike.ViewModel
 {
@@ -55,21 +52,20 @@ namespace NewTrackerforMike.ViewModel
             ViewAllMeds = new RelayCommand(() => AllMedsView());
 
             _dataService = dataService;
-            GetCount();
             Experiences = GetExperiences();
-
+            _dataService.GetLastLogSnapshot(
+                (items,error) =>
+                {
+                    LogLastSnapshot = items;
+                });
             _dataService.GetData(
                 (item, error) =>
                 {
                     WelcomeTitle = item.Title;
                 });
+             GetCount();
+       }
 
-            _dataService.GetLastLogSnapshot(
-                (items, error) =>
-                {
-                    LogLastSnapshot = items;
-                });
-        }
 
         #endregion Ctor
 
@@ -94,6 +90,10 @@ namespace NewTrackerforMike.ViewModel
                 (items, error) =>
                 {
                     LogLastSnapshot = items;
+                });
+            _dataService.GetTotalLogCount(
+                (count, error) => {
+                    LogCount = count;
                 });
 
             return null;
@@ -253,7 +253,7 @@ namespace NewTrackerforMike.ViewModel
             get { return _logCount; }
             set
             {
-                Set("LogCount", ref _logCount, value, true);
+                Set("LogCount", ref _logCount, value);
             }
         }
 
@@ -273,9 +273,13 @@ namespace NewTrackerforMike.ViewModel
 
         #region Methods
 
+        
+
+        
+
         public void GetCount()
         {
-            //LogCount = GetLogTotal;
+            //LogCount = GetLogTotal();
             _dataService.GetTotalLogCount(
                 (count, error) =>
                 {

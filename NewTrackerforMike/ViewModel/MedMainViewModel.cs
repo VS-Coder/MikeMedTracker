@@ -15,19 +15,23 @@ namespace NewTrackerforMike.ViewModel
         private IDocumentService _documentService;
         public MedMainViewModel(IDataService dataService, IDocumentService documentService)
         {
-            ExportMedList = new RelayCommand(() => MedListExport(MedList));
+            ExportMedList = new RelayCommand(() => MedListExport(MedsAll));
             DeleteMed = new RelayCommand(() => MedDelete(Med));
             GetInfo = new RelayCommand(() => MedInfo(Med));
 
             _dataService = dataService;
             _documentService = documentService;
 
+            _dataService.MedsAllActive(
+                (items, error) =>
+                {
+                    MedListActive = items;
+                });
             _dataService.MedsAll(
                 (items, error) =>
                 {
-                    MedList = items;
+                    MedsAll = items;
                 });
-
             _dataService.GetMedViewerTitle(
                 (title, error) =>
                 {
@@ -69,16 +73,28 @@ namespace NewTrackerforMike.ViewModel
                 Set("Med", ref _med, value, true);
             }
         }
-        private ObservableCollection<Meds> _medList = default(ObservableCollection<Meds>);
+        private ObservableCollection<Meds> _medListActive = default(ObservableCollection<Meds>);
 
-        public ObservableCollection<Meds> MedList
+        public ObservableCollection<Meds> MedListActive
         {
-            get { return _medList; }
+            get { return _medListActive; }
             set
             {
-                Set("MedList", ref _medList, value);
+                Set("MedListActive", ref _medListActive, value);
             }
         }
+
+        private ObservableCollection<Meds> _medsAll = default(ObservableCollection<Meds>);
+
+        public ObservableCollection<Meds> MedsAll
+        {
+            get { return _medsAll; }
+            set
+            {
+                Set("MedsAll", ref _medsAll, value);
+            }
+        }
+
 
         #region Commands
 
@@ -92,7 +108,7 @@ namespace NewTrackerforMike.ViewModel
             if (_dataService.DeleteMedication(_med) == true)
             {
                 Confirmation = "Medication has been deleted.";
-                MedList.Remove(_med);
+                MedsAll.Remove(_med);
                 return true;
             }
             else

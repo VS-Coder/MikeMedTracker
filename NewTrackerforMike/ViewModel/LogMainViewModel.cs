@@ -101,10 +101,18 @@ namespace NewTrackerforMike.ViewModel
                 (num, error) =>
                 {
                     LogCnt = num;
-
                 });
 
             MainOptions = GetOptions();
+        }
+        public void GetTotalLogCountForMainForm()
+        {
+            _dataService.GetTotalLogCount(
+                (num, error) =>
+                {
+                    LogCnt = num;
+                });
+            return;
         }
 
         private string _title;
@@ -188,10 +196,9 @@ namespace NewTrackerforMike.ViewModel
             option.Add(tmp);
             tmp = new Experience("Delete Selection");
             option.Add(tmp);
-            //tmp = new Experience("Close Window");
-            //option.Add(tmp);
             tmp = new Experience("Export Log Data");
             option.Add(tmp);
+            //tmp = new Experience("Close");
 
             return option;
         }
@@ -212,7 +219,7 @@ namespace NewTrackerforMike.ViewModel
                 case "Export Log Data":
                     LogExport(LogList);
                     break;
-                //case "Close Window":
+                //case "Close":
                 //    //LogMainView lmv = new LogMainView();
                 //    //lmv.Close();
                 //    break;

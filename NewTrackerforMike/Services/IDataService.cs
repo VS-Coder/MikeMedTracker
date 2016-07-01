@@ -15,7 +15,8 @@ namespace NewTrackerforMike.Services
         void GetMedEditorTitle(Action<DataItem, Exception> callback);
 
         void GetTotalLogCount(Action<int, Exception> callback);
-        bool LogAdd(Logs _log);
+        //void GetTotalLogCountForMainForm(Action<PillCount, Exception> callback);
+        bool LogAdd(Logs _log, int medId);
         bool EditLog(Logs _log);
         void GetLastLogSnapshot(Action<ObservableCollection<Logs>, Exception> callback);
         void LogsAll(Action<ObservableCollection<Logs>, Exception> callback);
@@ -30,5 +31,6 @@ namespace NewTrackerforMike.Services
         bool MedsExport(ObservableCollection<Meds> _meds);
 
         void GetPillCountTotals(Action<ObservableCollection<Meds>, Exception> callback);
+        double CalculateTotalPillUsage(string callingFunc, double qtyUsed, int medId, int _logId);
     }
 }

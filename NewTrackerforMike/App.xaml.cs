@@ -12,7 +12,6 @@ namespace NewTrackerforMike
         {
             DispatcherHelper.Initialize();
             SplashScreen _splash = new SplashScreen("SplashView.png");
-
         }
     }
 }

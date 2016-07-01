@@ -21,5 +21,15 @@ namespace NewTrackerforMike.View
         {
             Close();
         }
+
+        private void textBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Window_Activated(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

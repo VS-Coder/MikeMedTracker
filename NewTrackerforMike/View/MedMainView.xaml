@@ -24,7 +24,7 @@
         <DataGrid x:Name="dataGrid" Margin="10,58,10,189" Background="{x:Null}" 
                   Foreground="{DynamicResource LabelTextColor}" 
                   BorderBrush="{DynamicResource LabelBorderColor}" 
-                  ItemsSource="{Binding MedList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  ItemsSource="{Binding MedsAll, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectionMode="Single" SelectedItem="{Binding Med, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   AreRowDetailsFrozen="True" RowStyle="{DynamicResource DataGridRowStyle2}"/>
         <StackPanel HorizontalAlignment="Left" Height="134" Margin="10,591,0,0" VerticalAlignment="Top" Width="134">

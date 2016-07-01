@@ -31,13 +31,12 @@ namespace NewTrackerforMike.ViewModel
 
 
         private string _title = default(string);
-
         public string Title
         {
             get { return _title; }
             set
             {
-                Set("Title", ref _title, value, true);
+                Set("Title", ref _title, value);
             }
         }
 
@@ -59,21 +58,20 @@ namespace NewTrackerforMike.ViewModel
             get { return _success; }
             set
             {
-                Set("Success", ref _success, value, true);
+                Set("Success", ref _success, value);
             }
         }
 
-        private ObservableCollection<Logs> _logList = default(ObservableCollection<Logs>);
+        //private ObservableCollection<Logs> _logList = default(ObservableCollection<Logs>);
 
-        public ObservableCollection<Logs> LogList
-        {
-            get { return _logList; }
-            set
-            {
-                Set("LogList", ref _logList, value, true);
-            }
-        }
-
+        //public ObservableCollection<Logs> LogList
+        //{
+        //    get { return _logList; }
+        //    set
+        //    {
+        //        Set("LogList", ref _logList, value);
+        //    }
+        //}
 
         private ObservableCollection<Meds> _medList = default(ObservableCollection<Meds>);
 
@@ -84,7 +82,7 @@ namespace NewTrackerforMike.ViewModel
             {
                 if (_medList == value)
                 { return; }
-                Set("Medlist", ref _medList, value, true);
+                Set("Medlist", ref _medList, value);
             }
         }
 
@@ -98,11 +96,10 @@ namespace NewTrackerforMike.ViewModel
                 Set("SelectedMed", ref _selectedMed, value);
                 NewLog.MedName = SelectedMed.MedName;
                 NewLog.QtyTaken = SelectedMed.QtyPerDose;
+                NewLog.MedID = SelectedMed.MedsID;
             }
         
         }
-
-
 
         public RelayCommand SaveNewChanges
         {
@@ -119,15 +116,34 @@ namespace NewTrackerforMike.ViewModel
                     NewLog.LogNotes = "Taken as prescribed.";
                     // This is to set the MedStrength
                     NewLog.Strength = SelectedMed.MedStrength;
-                    var t = _dataService.LogAdd(NewLog);
+                    // Passing this ID into method to take inventory on.
+                    var tro = SelectedMed.MedsID;
+                    //
+                    var t = _dataService.LogAdd(NewLog, tro);
                     if (t == true)
                     {
                         Success = "Saved Data";
+                        _dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
                     }
                     else
                     {
-                        Success = "Unable to save data";
-                        return null; 
+                        Success = "Unable to save data!";
+                    }
+                }
+                else if(!String.IsNullOrWhiteSpace(NewLog.LogNotes))
+                {
+                    NewLog.Strength = SelectedMed.MedStrength;
+                    var tro = SelectedMed.MedsID;
+
+                    var t = _dataService.LogAdd(NewLog, tro);
+                    if (t == true)
+                    {
+                        Success = "Saved Data";
+                        _dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
+                    }
+                    else
+                    {
+                        Success = "Unable to save data!";
                     }
                 }
 
@@ -135,12 +151,21 @@ namespace NewTrackerforMike.ViewModel
             }
             catch(Exception e)
             {
+                Success = "Unable to save data";
+                SelectedMed = null;
                 base.Cleanup();
                 return e.InnerException;
             }
 
-            //SelectedMed = null;
 
+        }
+
+        // Inventory Methods.
+        //
+        public async Task InvAddLog(int id)
+        {
+
+            await Task.FromResult<object>(null);
         }
     }
 }
