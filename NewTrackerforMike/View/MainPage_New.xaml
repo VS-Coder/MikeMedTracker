@@ -11,7 +11,7 @@
         SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" 
         FontSize="16" Icon="MainIcon.png" 
         Title="{Binding WelcomeTitle}"
-        Height="336.5">
+        Height="336.5" Loaded="Window_Loaded">
 
     <Window.Resources>
         <vm:ViewModelLocator x:Key="vmLocator"/>
@@ -20,6 +20,11 @@
                 <TextBlock x:Name="textBlock" Margin="0,0,0,4.04" TextWrapping="Wrap"
                            Text="{Binding Name}"
                            d:LayoutOverrides="Width, Height"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="DataTemplate1">
+            <Grid>
+                <Image x:Name="image" Height="Auto" Width="Auto" Source="/NewTrackerforMike;component/Warning.png"/>
             </Grid>
         </DataTemplate>
     </Window.Resources>
@@ -60,5 +65,8 @@
                        Text="{Binding LogCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                        Foreground="{DynamicResource LabelTextColor}"/>
         </StackPanel>
+        <Button x:Name="warningButton" Content="" Grid.Column="1" HorizontalAlignment="Left" 
+                Margin="10,10,0,10" Width="91.5" Background="{x:Null}" 
+                ContentTemplate="{DynamicResource DataTemplate1}" Command="{Binding GetWarnings}" Visibility="Collapsed"/>
     </Grid>
 </Window>

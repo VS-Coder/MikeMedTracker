@@ -121,6 +121,14 @@ namespace NewTrackerforMike.ViewModel
             }
         }
 
+        public WarningViewModel WarningVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<WarningViewModel>();
+            }
+        }
+
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>

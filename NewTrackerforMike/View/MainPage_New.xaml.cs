@@ -21,10 +21,29 @@ namespace NewTrackerforMike.View
             listView.UnselectAll();
             dtaList.Items.Refresh();
             base.OnInitialized(e);
+            //_vm.Main.RefreshLowMeds();
+
+            //if (_vm.Main.LowMed.Count != 0)
+            //{
+            //    warningButton.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    warningButton.Visibility = Visibility.Collapsed;
+            //}
         }
-        
+
         protected override void OnActivated(EventArgs e)
         {
+            _vm.Main.RefreshLowMeds();
+            if (_vm.Main.LowMed.Count != 0)
+            {
+                warningButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                warningButton.Visibility = Visibility.Collapsed;
+            }
             listView.SelectedItem = null;
             listView.UnselectAll();
             dtaList.Items.Refresh();
@@ -32,5 +51,17 @@ namespace NewTrackerforMike.View
             base.OnActivated(e);
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _vm.Main.RefreshLowMeds();
+            if (_vm.Main.LowMed.Count != 0)
+            {
+                warningButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                warningButton.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

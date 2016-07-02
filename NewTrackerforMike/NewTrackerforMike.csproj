@@ -29,7 +29,7 @@
     <UpdateUrl>http://localhost/NewTrackerforMike/</UpdateUrl>
     <ProductName>Med Tracker For Mike</ProductName>
     <PublisherName>Mike Davis</PublisherName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>5.4.23.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\MedDocViewModel.cs" />
     <Compile Include="ViewModel\MedEditViewModel.cs" />
     <Compile Include="ViewModel\PillCountViewModel.cs" />
+    <Compile Include="ViewModel\WarningViewModel.cs" />
     <Compile Include="View\DocView.xaml.cs">
       <DependentUpon>DocView.xaml</DependentUpon>
     </Compile>
@@ -225,6 +226,9 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\PillCountView.xaml.cs">
       <DependentUpon>PillCountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WarningView.xaml.cs">
+      <DependentUpon>WarningView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\DocView.xaml">
       <SubType>Form</SubType>
@@ -279,6 +283,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PillCountView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WarningView.xaml">
       <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -473,7 +481,9 @@
     <Content Include="ms-appdata____Roaming_MikeMedTracker.Model.TrackerContext_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Warning.png" />
+    <Resource Include="Warning.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

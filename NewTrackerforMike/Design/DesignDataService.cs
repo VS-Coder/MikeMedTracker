@@ -224,6 +224,11 @@ namespace NewTrackerforMike.Design
             return 0;
         }
 
+        public void MedWarnings(Action<ObservableCollection<Meds>, Exception> callback)
+        {
+            callback(null, null);
+        }
+
 
     }
 }

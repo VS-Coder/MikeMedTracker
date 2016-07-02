@@ -123,7 +123,7 @@ namespace NewTrackerforMike.ViewModel
                     if (t == true)
                     {
                         Success = "Saved Data";
-                        _dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
+                        //_dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
                     }
                     else
                     {
@@ -139,7 +139,7 @@ namespace NewTrackerforMike.ViewModel
                     if (t == true)
                     {
                         Success = "Saved Data";
-                        _dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
+                        //_dataService.CalculateTotalPillUsage("LogAdd", NewLog.QtyTaken, tro, NewLog.LogsID);
                     }
                     else
                     {

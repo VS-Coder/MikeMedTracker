@@ -51,7 +51,14 @@ namespace NewTrackerforMike.ViewModel
             EditMed = new RelayCommand(() => MedEdit());
             ViewAllMeds = new RelayCommand(() => AllMedsView());
 
+            GetWarnings = new RelayCommand(() => ViewWarning());
+
             _dataService = dataService;
+            _dataService.MedWarnings(
+                (items, error) =>
+                {
+                    LowMed = items;
+                });
             Experiences = GetExperiences();
             _dataService.GetLastLogSnapshot(
                 (items,error) =>
@@ -138,10 +145,25 @@ namespace NewTrackerforMike.ViewModel
             return null;
         }
 
+        public object ViewWarning()
+        {
+            SimpleIoc.Default.Register<WarningViewModel>();
+            WarningView _wv = new WarningView();
+            _wv.ShowDialog();
+            SimpleIoc.Default.Unregister<WarningViewModel>();
+            return null;
+        }
+
         #endregion Log Commands
         //
         //
         #region Meds Commands
+
+        public RelayCommand GetWarnings
+        {
+            get;
+            set;
+        }
 
         public RelayCommand AddNewMed
         {
@@ -200,6 +222,15 @@ namespace NewTrackerforMike.ViewModel
                 Set("MedList", ref _medList, value);
             }
         }
+
+        private ObservableCollection<Meds> _lowMed = default(ObservableCollection<Meds>);
+
+        public ObservableCollection<Meds> LowMed
+        {
+            get { return _lowMed; }
+            set { Set("LowMed", ref _lowMed, value); }
+        }
+
 
 
         private ObservableCollection<Logs> _logLastSnapshot;
@@ -337,6 +368,17 @@ namespace NewTrackerforMike.ViewModel
             exp = new Experience("Close App");
             tmp.Add(exp);
             return tmp;
+        }
+
+        public void RefreshLowMeds()
+        {
+            _dataService.MedWarnings(
+            (items, error) =>
+            {
+                LowMed = items;
+            });
+
+            return;
         }
 
         #endregion
