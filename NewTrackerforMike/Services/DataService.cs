@@ -238,16 +238,20 @@ namespace NewTrackerforMike.Services
         {
             try
             {
-                using (_db = new TrackerContext())
+                if (CalculateTotalPillUsage("DeleteLog", _log.QtyTaken, _log.MedID, _log.LogsID) != 3)
                 {
-                    // Add Qty taken from the log back into Pill Count.
-                    //
-                    var selectedMed = _db.Medications.Where(e => e.MedName == _log.MedName);
-                    _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Modified;
-                    var item = _db.LogData.Remove(_log);
-                    _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Deleted;
-                    _db.SaveChanges();
-                    return true;
+                    using (_db = new TrackerContext())
+                    {
+                        _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Modified;
+                        var item = _db.LogData.Remove(_log);
+                        _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Deleted;
+                        _db.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch(Exception e)
@@ -272,7 +276,6 @@ namespace NewTrackerforMike.Services
             try
             {
                 FileStream _fs = null;
-                //var _list = _db.LogData.ToList();
                 var _fileLocation = "D:\\New Documents\\MDFileExports\\LogExport" + Guid.NewGuid() + ".csv";
                 if (!File.Exists(_fileLocation))
                 {
@@ -343,7 +346,6 @@ namespace NewTrackerforMike.Services
                                 + item.QtyPerDose + "," + item.ActiveStatus
                                 + Environment.NewLine
                                 );
-                            //return true;
                         }
                         else
                         {
@@ -353,6 +355,7 @@ namespace NewTrackerforMike.Services
                 }
                 return true;
             }
+            // Reaching here means that there was an error in making the file, or writing to the file.
             catch
             {
                 return false;
@@ -436,6 +439,7 @@ namespace NewTrackerforMike.Services
                             //taken more than stored log reflects. So edit to qty taken for more than saved.
                             else if (_log < qtyUsed)
                             {
+                                //Leftover to be added to the MedCount on the Med record.
                                 var val = _log - qtyUsed;
                                 _med.MedCount = val;
                                 _db.Entry<Meds>(_med).State = System.Data.Entity.EntityState.Modified;
@@ -443,6 +447,27 @@ namespace NewTrackerforMike.Services
                             }
                         }
                             break;
+                    // Deletion of log. Will need to add back in the amount used to the Med record.
+                    case "DeleteLog":
+                        {
+                            try
+                            {
+                                using (_db = new TrackerContext())
+                                {
+                                    var med = _db.Medications.Single(r => r.MedsID == medId);
+                                    // All log information will be deleted in the calling function/method.
+                                    var log = _db.LogData.Single(t => t.LogsID == _logId); 
+                                    med.MedCount = med.MedCount + log.QtyTaken;
+                                    _db.Entry<Meds>(med).State = System.Data.Entity.EntityState.Modified;
+                                    _db.SaveChanges();                                    
+                                }                                
+                            }
+                            catch(Exception e)
+                            {
+                                return 3; // Reaching here means that there was not a medId on the log record.
+                            }
+                            break;
+                        }
                     default:
                         break;
                 }
@@ -454,21 +479,6 @@ namespace NewTrackerforMike.Services
             return 0;
         }
 
-        public void GetPillCountTotals(Action<ObservableCollection<Meds>, Exception> callback)
-        {
-            try
-            {
-                using (_db = new TrackerContext())
-                {
-                    //var tmp = _db.Medications.Count();
-                    //callback(tmp, null);
-                }
-            }
-            catch(Exception e)
-            {
-                //callback(0, e.InnerException);
-            }
-        }
         #endregion
     }
 }

@@ -17,7 +17,7 @@
         <vm:ViewModelLocator x:Key="vmLocator"/>
     </Window.Resources>
 
-    <Grid Margin="0,0,15,0">
+    <Grid>
         <TextBlock x:Name="txtMsg" HorizontalAlignment="Left" TextWrapping="Wrap" 
                    Text="Medication Viewer" VerticalAlignment="Top" FontSize="32" 
                    FontWeight="Bold" Margin="194,10,0,0" Width="327"/>
@@ -27,7 +27,7 @@
                   ItemsSource="{Binding MedsAll, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectionMode="Single" SelectedItem="{Binding Med, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   AreRowDetailsFrozen="True" RowStyle="{DynamicResource DataGridRowStyle2}"/>
-        <StackPanel HorizontalAlignment="Left" Height="134" Margin="10,591,0,0" VerticalAlignment="Top" Width="134">
+        <StackPanel HorizontalAlignment="Left" Height="134" Margin="10,566,0,0" VerticalAlignment="Top" Width="134">
             <Button x:Name="btnClose" Content="Close" Click="btnClose_Click" Background="{x:Null}" Foreground="White"/>
             <Button x:Name="button" Content="Delete Med" Command="{Binding DeleteMed}"
                     Background="{x:Null}" Foreground="White"/>
@@ -36,9 +36,9 @@
             <Button x:Name="button1" Content="Info" Command="{Binding GetInfo}"
                     Background="{x:Null}" Foreground="White"/>
             <Button x:Name="button3" Content="List Active Meds" 
-                    Foreground="{DynamicResource LabelBorderColor}" Background="{x:Null}" Height="35.78"/>
+                    Foreground="{DynamicResource LabelBorderColor}" Background="{x:Null}" Height="28"/>
         </StackPanel>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="66" Margin="383,659,0,0"
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="66" Margin="373,634,0,0"
                    TextWrapping="Wrap" Text="{Binding Confirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                    VerticalAlignment="Top" Width="414" FontSize="29.333" FontWeight="Bold"/>
     </Grid>

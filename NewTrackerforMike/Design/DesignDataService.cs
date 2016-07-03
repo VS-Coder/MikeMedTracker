@@ -168,11 +168,6 @@ namespace NewTrackerforMike.Design
 
         }
 
-        public void GetPillCountTotals(Action<ObservableCollection<Meds>, Exception> callback)
-        {
-
-        }
-
         public bool MedsExport(ObservableCollection<Meds> _meds)
         {
             return false;

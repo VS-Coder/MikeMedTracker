@@ -30,7 +30,6 @@ namespace NewTrackerforMike.Services
         void MedsAll(Action<ObservableCollection<Meds>, Exception> callback);
         bool MedsExport(ObservableCollection<Meds> _meds);
 
-        void GetPillCountTotals(Action<ObservableCollection<Meds>, Exception> callback);
         double CalculateTotalPillUsage(string callingFunc, double qtyUsed, int medId, int _logId);
 
         void MedWarnings(Action<ObservableCollection<Meds>, Exception> callback);
