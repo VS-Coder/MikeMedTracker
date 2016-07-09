@@ -47,7 +47,7 @@
         </ListView>
         <Button x:Name="btnClose" Content="Close Window"
                 Click="btnClose_Click" Background="{x:Null}" Foreground="White" 
-                Margin="0,215,193,0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Width="155"/>
+                Margin="10,215,192.594,0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Right" Height="100" 
                     Margin="0,10,10,0" VerticalAlignment="Top" Width="100">
             <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Log Count" 

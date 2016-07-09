@@ -36,7 +36,10 @@
             <Label Content="Qty Taken:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}"/>
             <TextBox x:Name="qtyTakenTextBox" Grid.Column="1" Grid.Row="2" Text="{Binding QtyTaken, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Margin="0,0,-135,0"/>
             <Label Content="Time Stamp:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}"/>
-            <DatePicker x:Name="timeStampDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,-135,4" Grid.Row="3" SelectedDate="{Binding EditLog.TimeStamp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="256" Text="{Binding TimeStamp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <DatePicker x:Name="timeStampDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3,4,-135,4" Grid.Row="3" 
+                        SelectedDate="{Binding EditLog.TimeStamp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                        VerticalAlignment="Center" Width="256" 
+                        Text="{Binding TimeStamp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedDateFormat="Long"/>
         </Grid>
         <StackPanel HorizontalAlignment="Left" Height="68" Margin="583,28,0,0" VerticalAlignment="Top" Width="126">
             <Button x:Name="btnSave" Content="Save Changes" Command="{Binding SaveChangesToEditor}" Background="{x:Null}" Foreground="White"/>
