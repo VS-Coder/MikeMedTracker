@@ -131,6 +131,14 @@ namespace NewTrackerforMike.ViewModel
             }
         }
 
+        public ActiveListViewModel ActiveMedVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ActiveListViewModel>();
+            }
+        }
+
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>

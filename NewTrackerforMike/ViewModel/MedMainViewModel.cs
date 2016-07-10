@@ -15,6 +15,7 @@ namespace NewTrackerforMike.ViewModel
         private IDocumentService _documentService;
         public MedMainViewModel(IDataService dataService, IDocumentService documentService)
         {
+            GotoActiveMedsList = new RelayCommand(() => NavtoMedsActive());
             ExportMedList = new RelayCommand(() => MedListExport(MedsAll));
             DeleteMed = new RelayCommand(() => MedDelete(Med));
             GetInfo = new RelayCommand(() => MedInfo(Med));
@@ -22,11 +23,6 @@ namespace NewTrackerforMike.ViewModel
             _dataService = dataService;
             _documentService = documentService;
 
-            _dataService.MedsAllActive(
-                (items, error) =>
-                {
-                    MedListActive = items;
-                });
             _dataService.MedsAll(
                 (items, error) =>
                 {
@@ -131,6 +127,21 @@ namespace NewTrackerforMike.ViewModel
             _view.ShowDialog();
             SimpleIoc.Default.Unregister<MedDocViewModel>();
 
+            return null;
+        }
+
+        public RelayCommand GotoActiveMedsList
+        {
+            get;
+            set;
+        }
+
+        public object NavtoMedsActive()
+        {
+            SimpleIoc.Default.Register<ActiveListViewModel>();
+            var view = new ActiveMedView();
+            view.ShowDialog();
+            SimpleIoc.Default.Unregister<ActiveListViewModel>();
             return null;
         }
 

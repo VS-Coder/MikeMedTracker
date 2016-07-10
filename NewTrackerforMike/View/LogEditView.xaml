@@ -18,7 +18,8 @@
     </Window.Resources>
 
     <Grid>
-        <Grid x:Name="grid1" DataContext="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="363" Height="166">
+        <Grid x:Name="grid1" DataContext="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+              HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="363" Height="166">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -49,7 +50,8 @@
                   HorizontalAlignment="Left" Margin="10,259,0,0"
                   VerticalAlignment="Top" Background="{x:Null}" 
                   ItemsSource="{Binding EditorList, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowStyle="{DynamicResource DataGridRowStyle2}" Foreground="{DynamicResource LabelTextColor}"/>
+                  SelectedItem="{Binding EditLog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  RowStyle="{DynamicResource DataGridRowStyle2}" Foreground="{DynamicResource LabelTextColor}"/>
         <TextBlock x:Name="textBlock" Height="70" Margin="416,101,81,0" TextWrapping="Wrap" Text="{Binding Success, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" FontSize="29.333" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
         <CheckBox x:Name="checkBox" Content="Archived Med" HorizontalAlignment="Left" 
                   Margin="416,33,0,0" VerticalAlignment="Top" Background="{x:Null}" 

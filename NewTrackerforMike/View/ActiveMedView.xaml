@@ -1,0 +1,24 @@
+﻿<Window x:Class="NewTrackerforMike.View.ActiveMedView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel" 
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        mc:Ignorable="d ignore"
+        Background="{DynamicResource WindowBackgroundColor}" Foreground="{DynamicResource LabelTextColor}" 
+        WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        DataContext="{Binding ActiveMedVM, Source={StaticResource Locator}}">
+    
+    <Window.Resources>
+        <vm:ViewModelLocator x:Key="vmLocator" />
+    </Window.Resources>
+
+    <Grid Background="{x:Null}">
+        <DataGrid Background="{x:Null}" Foreground="{DynamicResource LabelTextColor}" 
+                  Margin="0,122,0,0"
+                  RowStyle="{DynamicResource DataGridRowStyle2}"
+                  ItemsSource="{Binding ActiveMedListing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedMed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" />
+    </Grid>
+</Window>

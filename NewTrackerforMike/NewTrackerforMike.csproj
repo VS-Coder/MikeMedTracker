@@ -187,11 +187,15 @@
     <Compile Include="Model\PillCount.cs" />
     <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\IDocumentService.cs" />
+    <Compile Include="ViewModel\ActiveListViewModel.cs" />
     <Compile Include="ViewModel\MedAddViewModel.cs" />
     <Compile Include="ViewModel\MedDocViewModel.cs" />
     <Compile Include="ViewModel\MedEditViewModel.cs" />
     <Compile Include="ViewModel\PillCountViewModel.cs" />
     <Compile Include="ViewModel\WarningViewModel.cs" />
+    <Compile Include="View\ActiveMedView.xaml.cs">
+      <DependentUpon>ActiveMedView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DocView.xaml.cs">
       <DependentUpon>DocView.xaml</DependentUpon>
     </Compile>
@@ -238,6 +242,10 @@
     <Compile Include="View\WarningView.xaml.cs">
       <DependentUpon>WarningView.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\ActiveMedView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DocView.xaml">
       <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>

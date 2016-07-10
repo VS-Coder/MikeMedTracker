@@ -205,6 +205,18 @@ namespace NewTrackerforMike.ViewModel
             SimpleIoc.Default.Unregister<MedMainViewModel>();
             return null;
         }
+
+        public RelayCommand GetAllActiveMeds
+        {
+            get;
+            set;            
+        }
+
+        public object ListAllActiveMeds()
+        {
+
+            return null;
+        }
         #endregion Med Commands
 
 

@@ -36,7 +36,8 @@
             <Button x:Name="button1" Content="Info" Command="{Binding GetInfo}"
                     Background="{x:Null}" Foreground="White"/>
             <Button x:Name="button3" Content="List Active Meds" 
-                    Foreground="{DynamicResource LabelBorderColor}" Background="{x:Null}" Height="28"/>
+                    Foreground="{DynamicResource LabelBorderColor}" Background="{x:Null}" Height="28" 
+                    Command="{Binding GotoActiveMedsList}"/>
         </StackPanel>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="66" Margin="373,634,0,0"
                    TextWrapping="Wrap" Text="{Binding Confirmation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
