@@ -6,10 +6,11 @@
         xmlns:vm="clr-namespace:NewTrackerforMike.ViewModel" 
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        Background="{DynamicResource WindowBackgroundColor}" Foreground="{DynamicResource LabelTextColor}" 
+        Background="{DynamicResource WindowBackgroundColor}"
+        Foreground="{DynamicResource LabelTextColor}" 
         WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
-        DataContext="{Binding ActiveMedVM, Source={StaticResource Locator}}">
-    
+        DataContext="{Binding ActiveMedVM, Source={StaticResource Locator}}" Icon="/NewTrackerforMike;component/Icon1.ico">
+
     <Window.Resources>
         <vm:ViewModelLocator x:Key="vmLocator" />
     </Window.Resources>
@@ -20,5 +21,9 @@
                   RowStyle="{DynamicResource DataGridRowStyle2}"
                   ItemsSource="{Binding ActiveMedListing, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedMed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" />
+        <Button x:Name="btnClose" Content="Close" 
+                HorizontalAlignment="Left" Margin="657,61,0,0"
+                VerticalAlignment="Top" Width="75" Click="btnClose_Click"/>
+        <TextBlock x:Name="textBlock" Margin="222,41,268.71,0" TextWrapping="Wrap" Text="Active Medication Viewer" VerticalAlignment="Top" Height="39.96" FontSize="21.333" FontWeight="Bold"/>
     </Grid>
 </Window>

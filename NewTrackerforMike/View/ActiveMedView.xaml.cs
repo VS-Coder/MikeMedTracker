@@ -15,5 +15,10 @@ namespace NewTrackerforMike.View
         {
             _vm = (ViewModelLocator)this.FindResource("vmLocator");
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

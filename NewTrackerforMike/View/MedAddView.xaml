@@ -72,7 +72,7 @@
                             SelectedDateFormat="Short" Text="1/21/2016"/>
                 <TextBlock x:Name="textBlock" Grid.Row="10" TextWrapping="Wrap" Text="Dose Interval"/>
                 <TextBox x:Name="textBox2" Grid.Column="1" Grid.Row="10" 
-                         TextWrapping="Wrap"/>
+                         TextWrapping="Wrap" Text="{Binding DoseInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBlock x:Name="tctTextBlock1" Grid.Row="11" TextWrapping="Wrap" Text="Archive"/>
                 <CheckBox x:Name="Archived" Content="" Grid.Column="1" 
                           Margin="10,10,25.645,0" Grid.Row="11" d:LayoutOverrides="Width, Height"/>

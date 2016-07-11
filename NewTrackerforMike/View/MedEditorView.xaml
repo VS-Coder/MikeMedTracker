@@ -19,8 +19,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer HorizontalAlignment="Left" Width="334" Margin="0,0,0,29">
-            <Grid x:Name="grid1" DataContext="{Binding EditMed}" VerticalAlignment="Top" Height="465">
+        <ScrollViewer HorizontalAlignment="Left" Width="334" Margin="0,0,0,10">
+            <Grid x:Name="grid1" DataContext="{Binding EditMed}" VerticalAlignment="Top" Height="508">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -36,7 +36,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="33*"/>
-                    <RowDefinition Height="32*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="33*"/>
                 </Grid.RowDefinitions>
                 <Label Content="Directions:" Grid.Column="0" Grid.Row="0" Foreground="{DynamicResource LabelTextColor}"/>
                 <TextBox x:Name="directionsTextBox" Grid.Column="1" Grid.Row="0" 
@@ -63,6 +64,8 @@
                 <Label x:Name="label3" Content="Med Count DateTime" Grid.Row="10" Foreground="{DynamicResource LabelTextColor}"/>
                 <TextBox x:Name="textBox1" Grid.Column="1" Grid.Row="9" TextWrapping="Wrap" Text="{Binding MedCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DatePicker Grid.Column="1" Grid.Row="10" DisplayDate="2016-01-05" SelectedDate="{Binding CountDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="2/24/2016" SelectedDateFormat="Short"/>
+                <Label x:Name="DoseInterval" Content="Dose Interval" Foreground="{DynamicResource LabelTextColor}" Grid.Row="11" Grid.Column="0"/>
+                <TextBox x:Name="doseInterval" Grid.Column="1" Grid.Row="11" Text="{Binding DoseInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </ScrollViewer>
         <StackPanel HorizontalAlignment="Left" Height="61" Margin="38,55,0,0" VerticalAlignment="Top" Width="128" Grid.Column="1">
