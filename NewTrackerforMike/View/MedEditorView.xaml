@@ -37,7 +37,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="33*"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="32"/>
                 </Grid.RowDefinitions>
                 <Label Content="Directions:" Grid.Column="0" Grid.Row="0" Foreground="{DynamicResource LabelTextColor}"/>
                 <TextBox x:Name="directionsTextBox" Grid.Column="1" Grid.Row="0" 

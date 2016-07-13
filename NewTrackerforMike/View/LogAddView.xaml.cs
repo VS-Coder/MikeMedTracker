@@ -11,20 +11,13 @@ namespace NewTrackerforMike.View
         public LogAddView()
         {
             InitializeComponent();
-            //Closing += LogAddView_Closing;
             _vm = (ViewModelLocator)this.FindResource("vmLocator");
             _vm.LogAddVM.NewLog = new Logs();
-            //_vm.LogAddVM.NewLog.TimeStamp = DateTime.Now;
             _vm.LogAddVM.NewLog.TimeStamp = DateTime.Now;
             this.timeStampDatePicker.Text = DateTime.Now.ToShortDateString();
 
         }
 
-        //private void LogAddView_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        //{
-        //    _vm.LogAddVM.Cleanup();
-        //    //throw new NotImplementedException();
-        //}
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -44,7 +37,7 @@ namespace NewTrackerforMike.View
         {
             if (tblSuccess.Text != String.Empty)
             {
-                tblSuccess.Text = "";
+                tblSuccess.Text = String.Empty;
             }
 
             _vm.LogAddVM.NewLog = new Logs();
@@ -58,6 +51,11 @@ namespace NewTrackerforMike.View
         private void Window_Initialized(object sender, EventArgs e)
         {
             this.dataGrid.Items.Refresh();
+        }
+
+        private void dataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            this.timeStampDatePicker.SelectedDate = DateTime.Now;
         }
     }
 }

@@ -79,9 +79,9 @@
                      Text="{Binding LogAddVM.SelectedMed.QtyPerDose, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
                      Margin="0,0,1,0" AcceptsReturn="True" AutoWordSelection="True" TextWrapping="Wrap" 
                      DataContext="{Binding Source={StaticResource Locator}}"/>
-            <Label Content="Time Stamp:" Grid.Column="0" HorizontalAlignment="Left" Margin="23,2,0,43" Grid.Row="3" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}" Height="31" Width="97"/>
+            <Label Content="Time Stamp:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,5,0,43" Grid.Row="3" VerticalAlignment="Center" Foreground="{DynamicResource LabelTextColor}" Height="31" Width="97"/>
             <DatePicker x:Name="timeStampDatePicker" Grid.Column="1" Grid.Row="3" 
-                        SelectedDate="{Binding TimeStamp}" Text="2/26/2016" Margin="0,0,0,43"/>
+                        SelectedDate="{Binding TimeStamp, NotifyOnSourceUpdated=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Text="2/26/2016" Margin="0,0,0,43"/>
             <CheckBox x:Name="checkBox" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,66,0,-14" Grid.Row="3" VerticalAlignment="Top" Height="23" Width="221"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="23" Margin="10,66,0,-16" Grid.Row="3" TextWrapping="Wrap" Text="Archived" VerticalAlignment="Top" Width="105"/>
             <TextBlock x:Name="tblMedID" Margin="0,0,-461.717,-31.28" 
@@ -102,7 +102,7 @@
                   Foreground="{DynamicResource LabelTextColor}" 
                   ItemsSource="{Binding MedList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedMed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" 
-                  RowStyle="{DynamicResource DataGridRowStyle2}" SelectionMode="Single" />
+                  RowStyle="{DynamicResource DataGridRowStyle2}" SelectionMode="Single" SelectionChanged="dataGrid_SelectionChanged" />
         <TextBlock x:Name="tblSuccess" HorizontalAlignment="Left" 
                    Margin="574,47,0,0" TextWrapping="Wrap" 
                    Text="{Binding Success, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"

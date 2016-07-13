@@ -21,12 +21,6 @@ namespace NewTrackerforMike.View
             Close();
         }
 
-        private void btnClear_Click(object sender, RoutedEventArgs e)
-        {
-            this.dataGrid.SelectedItem = null;
-            this.lblSuccess.Text = "Form Cleared";
-        }
-
         private void dataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             this.lblSuccess.Text = "";

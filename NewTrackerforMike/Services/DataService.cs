@@ -95,17 +95,27 @@ namespace NewTrackerforMike.Services
                 callback(null, e.InnerException);
             }
         }
-
+        /// <summary>
+        /// This method will alter the QTY of the medication that was input by the user,
+        /// and then save the entry to the database. medId is used to properly alter
+        /// the medication record. The CalculateTotalPillUsage method, will do the work
+        /// of saving the QTY used to the Log object.
+        /// </summary>
+        /// <param name="_log"></param>
+        /// <param name="medId"></param>
+        /// <returns></returns>
         public bool LogAdd(Logs _log, int medId)
         {
             try
             {
+                    if (_log.TimeStamp == null)
+                    {
+                        _log.TimeStamp = DateTime.Now;
+                    }
                     if (CalculateTotalPillUsage("LogAdd", _log.QtyTaken, medId, _log.LogsID) != 3)
                     {
                         using (_db = new TrackerContext())
                         {
-
-                            _log.TimeStamp = DateTime.Now;
                             _db.Entry<Logs>(_log).State = System.Data.Entity.EntityState.Added;
                             _db.SaveChanges();
                             return true;
@@ -268,6 +278,7 @@ namespace NewTrackerforMike.Services
         ///   a bool to signify success either True or False.
         ///   This method expects to receive the export listing
         ///   from the calling method to be added to the export file.
+        /// Basically this is a database dump.
         /// </summary>
         /// <returns>bool</returns>
 

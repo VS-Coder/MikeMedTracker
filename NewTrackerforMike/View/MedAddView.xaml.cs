@@ -14,6 +14,7 @@ namespace NewTrackerforMike.View
             _vm = (ViewModelLocator)this.FindResource("vmLocator");
             _vm.MedAddVM.ActiveMed = _med;
             _med.RefillDateTime = DateTime.Now;
+            _med.CountDate = DateTime.Now;
         }
          
         private void Window_Loaded(object sender, RoutedEventArgs e)

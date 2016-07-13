@@ -181,6 +181,14 @@
     <Compile Include="Migrations\201607010139594_MedIdAddedToLog.Designer.cs">
       <DependentUpon>201607010139594_MedIdAddedToLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607132017558_ChangestoMedModel.cs" />
+    <Compile Include="Migrations\201607132017558_ChangestoMedModel.Designer.cs">
+      <DependentUpon>201607132017558_ChangestoMedModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607132157130_RollbackChanges.cs" />
+    <Compile Include="Migrations\201607132157130_RollbackChanges.Designer.cs">
+      <DependentUpon>201607132157130_RollbackChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Experience.cs" />
     <Compile Include="Model\MedDocuments.cs" />
@@ -350,6 +358,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201607010139594_MedIdAddedToLog.resx">
       <DependentUpon>201607010139594_MedIdAddedToLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607132017558_ChangestoMedModel.resx">
+      <DependentUpon>201607132017558_ChangestoMedModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607132157130_RollbackChanges.resx">
+      <DependentUpon>201607132157130_RollbackChanges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -67,9 +67,8 @@
         			IsChecked="{Binding ActiveStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="textBox1" Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="{Binding MedCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <DatePicker Grid.Column="1" Grid.Row="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                            DisplayDate="2016-01-05" Cursor="None" 
                             SelectedDate="{Binding CountDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                            SelectedDateFormat="Short" Text="1/21/2016"/>
+                            Text="2/12/2016"/>
                 <TextBlock x:Name="textBlock" Grid.Row="10" TextWrapping="Wrap" Text="Dose Interval"/>
                 <TextBox x:Name="textBox2" Grid.Column="1" Grid.Row="10" 
                          TextWrapping="Wrap" Text="{Binding DoseInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
